@@ -1,11 +1,13 @@
-import { ModifierArgs } from 'ember-modifier';
 import UploadFile from 'ember-file-upload/upload-file';
 
-export interface SelectFileModifierArgs extends ModifierArgs {
-  named: {
-    filter?: (file: File, files: File[], index: number) => boolean;
-    onFilesSelected?: (files: UploadFile[]) => void;
+export interface SelectFileModifierSignature {
+  Args: {
+    Named: {
+      filter?: (file: File, files: File[], index: number) => boolean;
+      onFilesSelected?: (files: UploadFile[]) => void;
+    };
   };
+  Element: HTMLInputElement;
 }
 
 export interface QueueListener {
@@ -105,8 +107,10 @@ export interface HTTPRequestResponse {
   headers: Record<string, string>;
 }
 
-export interface DragListenerModifierArgs {
-  named: DragListenerHandlers;
+export interface DragListenerModifierSignature {
+  Args: {
+    Named: DragListenerHandlers;
+  };
 }
 
 type DragListenerHandler = (event: DragEvent | SyntheticDragEvent) => void;
